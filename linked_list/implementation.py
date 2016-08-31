@@ -44,7 +44,8 @@ class LinkedList(AbstractLinkedList):
         
 
     def __iter__(self):
-        return self.start
+        self.it = self.start
+        return self
     
     
 
@@ -172,3 +173,14 @@ class LinkedList(AbstractLinkedList):
         return new_linked_list
     
     copy = __copy__
+    
+    def __next__(self):
+        ret_iter = self.it
+        if self.it != None:
+            ret_iter = self.it
+            self.it = ret_iter.next
+            return ret_iter
+        else:
+            raise StopIteration()
+    
+    next = __next__
